@@ -10,58 +10,70 @@ body {
     margin: 0;
     font-family: 'Arial', sans-serif;
     background: #ffd6e7;
+
+    min-height: 100vh;
+    min-height: 100dvh;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
 }
 
-/* MAIN WRAPPER */
+/* FULL SCREEN WRAPPER */
 .wrapper {
     width: 100%;
-    max-width: 400px;
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
     text-align: center;
+    padding: 20px;
 }
 
-/* CARD STYLE */
+/* CONTENT (NO BOX LOOK) */
 .card {
-    background: #ffeaf4;
-    padding: 20px;
-    border-radius: 25px;
-    box-shadow: 0 8px 20px rgba(255, 100, 150, 0.2);
+    width: 100%;
+    max-width: 500px;
+    background: transparent;
+    box-shadow: none;
+    padding: 10px;
 }
 
 /* TITLE */
 .title {
-    font-size: 26px;
+    font-size: 30px;
     font-weight: bold;
     color: #ff5d8f;
 }
 
 /* IMAGE */
 .img {
-    width: 220px;
-    height: 220px;
-    border-radius: 20px;
+    width: 260px;
+    height: 260px;
+    border-radius: 25px;
     border: 5px solid #ffb6c1;
     object-fit: cover;
-    margin: 15px 0;
+    margin: 20px 0;
 }
 
 /* TEXT */
 .text {
-    font-size: 16px;
+    font-size: 18px;
     color: #ff4d88;
 }
 
 /* BUTTONS */
 .btn {
     display: inline-block;
-    padding: 12px 18px;
-    margin: 10px 5px;
-    border-radius: 20px;
+    padding: 14px 20px;
+    margin: 12px 8px;
+    border-radius: 25px;
     border: none;
-    font-size: 15px;
+    font-size: 16px;
     cursor: pointer;
 }
 
@@ -79,37 +91,52 @@ body {
 /* LINKS */
 .link {
     display: block;
-    margin: 10px;
-    padding: 12px;
+    margin: 12px auto;
+    padding: 14px;
+    width: 80%;
+    max-width: 300px;
     background: white;
     border-radius: 15px;
     text-decoration: none;
     color: #ff4d88;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.05);
 }
 
 /* HEARTS */
 .heart {
     position: fixed;
-    bottom: -10px;
+    bottom: -20px;
+    left: 0;
     font-size: 20px;
-    animation: floatUp linear forwards;
+
+    animation: floatUp 4s linear forwards;
+    will-change: transform, opacity;
 }
 
 @keyframes floatUp {
-    0% { transform: translateY(0); opacity:1; }
-    100% { transform: translateY(-100vh); opacity:0; }
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-110vh);
+        opacity: 0;
+    }
 }
 
 /* HIDDEN */
-.hidden { display:none; }
+.hidden {
+    display: none;
+}
 
-/* BYE FADE */
+/* FADE */
 .fade {
     animation: fadeOut 3s forwards;
 }
+
 @keyframes fadeOut {
-    to {opacity:0;}
+    to {
+        opacity: 0;
+    }
 }
 </style>
 </head>
@@ -118,86 +145,98 @@ body {
 
 <div class="wrapper">
 
-<!-- LANDING -->
-<div id="landing" class="card">
-    <div class="title">just a question… </div>
+    <!-- LANDING -->
+    <div id="landing" class="card">
+        <div class="title">just a question…</div>
 
-    <!-- 🔥 PUT YOUR MONKEY IMAGE HERE -->
-    <img src="Landing.png" class="img">
+        <img src="Landing.png" class="img">
 
-    <div class="text">be honest… do you still love me? </div>
+        <div class="text">be honest… do you still love me? 💗</div>
 
-    <button class="btn yes" onclick="yesClick()">Yes, I still do 💗</button>
-    <button class="btn no" onclick="noClick()">No, I’ve moved on 💔</button>
-</div>
+        <button class="btn yes" onclick="yesClick()">Yes, I still do 💗</button>
+        <button class="btn no" onclick="noClick()">No, I’ve moved on 💔</button>
+    </div>
 
-<!-- YES PAGE -->
-<div id="yesPage" class="card hidden">
-    <div class="title">Yay… I knew it 😌💗</div>
+    <!-- YES PAGE -->
+    <div id="yesPage" class="card hidden">
+        <div class="title">Yay… I knew it 😌💗</div>
 
-    <img src="Me.jpeg" class="img">
+        <img src="Me.jpeg" class="img">
 
-    <div class="text">okay then… don’t be shy 😏</div>
+        <div class="text">okay then… don’t be shy 😏</div>
 
-    <a href="tel:09918604535" class="link">📞 Call me</a>
-    <a href="https://m.me/unknown0580" class="link">💬 Message me</a>
-    <a href="mailto:reamayreyes09@gmail.com" class="link">📧 Email me</a>
+        <a href="tel:09918604535" class="link">📞 Call me</a>
+        <a href="https://m.me/unknown0580" class="link">💬 Message me</a>
+        <a href="mailto:reamayreyes09@gmail.com" class="link">📧 Email me</a>
+    </div>
 
-</div>
+    <!-- NO PAGE -->
+    <div id="noPage" class="card hidden">
+        <div id="byeText" class="title">oh… okay 🥺</div>
 
-<!-- NO PAGE -->
-<div id="noPage" class="card hidden">
-    <div id="byeText" class="title">oh… okay 🥺</div>
+        <img src="https://media.giphy.com/media/OPU6wzx8JrHna/giphy.gif" width="180">
 
-    <img src="https://media.giphy.com/media/OPU6wzx8JrHna/giphy.gif" width="180">
-
-    <div class="text">bye… bye 💔</div>
-</div>
+        <div class="text">bye… bye 💔</div>
+    </div>
 
 </div>
 
 <script>
 
-/* BLOCK */
-if(localStorage.getItem("blocked") === "true"){
-    document.body.innerHTML = "<h2 style='text-align:center;'>Access denied 💔</h2>";
-}
+const landing = document.getElementById("landing");
+const yesPage = document.getElementById("yesPage");
+const noPage = document.getElementById("noPage");
+const byeText = document.getElementById("byeText");
+
+/* BLOCK CHECK */
+try {
+    if (localStorage.getItem("blocked") === "true") {
+        document.body.innerHTML = "<h2 style='text-align:center;'>Access denied 💔</h2>";
+    }
+} catch (e) {}
 
 /* HEARTS */
-function spawnHeart(){
+function spawnHeart() {
     const heart = document.createElement("div");
     heart.className = "heart";
-    heart.innerHTML = "💗";
+    heart.textContent = "💗";
 
-    heart.style.left = Math.random()*100 + "vw";
-    heart.style.fontSize = (15 + Math.random()*20) + "px";
-    heart.style.animationDuration = (3 + Math.random()*2) + "s";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (15 + Math.random() * 20) + "px";
 
     document.body.appendChild(heart);
 
-    setTimeout(()=>heart.remove(),5000);
+    setTimeout(() => {
+        heart.remove();
+    }, 5000);
 }
 
 /* YES */
-function yesClick(){
+function yesClick() {
     landing.classList.add("hidden");
     yesPage.classList.remove("hidden");
 
     let interval = setInterval(spawnHeart, 200);
-    setTimeout(()=>clearInterval(interval), 10000);
+
+    setTimeout(() => {
+        clearInterval(interval);
+    }, 10000);
 }
 
 /* NO */
-function noClick(){
+function noClick() {
     landing.classList.add("hidden");
     noPage.classList.remove("hidden");
 
-    setTimeout(()=>{
-        byeText.classList.add("fade");
-    },1000);
+    setTimeout(() => {
+        if (byeText) byeText.classList.add("fade");
+    }, 1000);
 
-    localStorage.setItem("blocked","true");
+    try {
+        localStorage.setItem("blocked", "true");
+    } catch (e) {}
 }
+
 </script>
 
 </body>
